@@ -1,0 +1,163 @@
+{
+  "project": {
+    "name": "nextjs-shadcn-template",
+    "type": "web",
+    "framework": "nextjs",
+    "version": "14.0.0"
+  },
+  "development": {
+    "versions": {
+      "nextjs": "14.x",
+      "react": "18.x",
+      "node": "18.x || 20.x",
+      "packageManager": "npm"
+    },
+    "setupRules": [
+      "ALWAYS use Next.js 14.x",
+      "Initialize project first, then add shadcn",
+      "Use npm, not yarn/pnpm/bun",
+      "Install dependencies in correct order"
+    ],
+    "dependencies": {
+      "core": [
+        "next@14.x",
+        "react@18.x",
+        "react-dom@18.x",
+        "typescript",
+        "tailwindcss"
+      ],
+      "form": [
+        "react-hook-form",
+        "@hookform/resolvers", 
+        "zod"
+      ],
+      "vercel": [
+        "@vercel/postgres",
+        "@vercel/blob"
+      ],
+      "email": [
+        "@emailjs/browser"
+      ],
+      "file": [
+        "react-dropzone"
+      ],
+      "database": [
+        "prisma", 
+        "@prisma/client"
+      ],
+      "utils": [
+        "date-fns", 
+        "clsx", 
+        "tailwind-merge", 
+        "lucide-react"
+      ],
+      "dev": [
+        "@types/node"
+      ]
+    },
+    "shadcnComponents": [
+      "form",
+      "input",
+      "button",
+      "select",
+      "checkbox",
+      "radio-group",
+      "textarea",
+      "switch",
+      "calendar",
+      "popover",
+      "card",
+      "alert",
+      "toast",
+      "dialog",
+      "progress",
+      "table",
+      "badge"
+    ],
+    "bestPractices": [
+      "Use uncontrolled inputs for file uploads with React Hook Form",
+      "Use .refine() or .superRefine() for conditional validation in Zod schemas",
+      "Configure CORS for EmailJS in production",
+      "Use singleton instances for database connections in Next.js",
+      "Wrap toast notifications with a provider in the root layout",
+      "Implement both client and server-side validation for file uploads",
+      "Ensure tailwind.config.js includes all shadcn paths",
+      "Use proper typing for FileList and uncontrolled inputs",
+      "Break down Zod schemas into smaller, reusable pieces"
+    ]
+  },
+  "features": {
+    "core": [
+      "Advanced form component with conditionals",
+      "File upload component",
+      "Email notification service",
+      "Database integration layer",
+      "Backend API routes for form submission",
+      "Toast notification system"
+    ],
+    "folder": {
+      "structure": [
+        "src/app/",
+        "src/app/api/forms/submit/",
+        "src/app/api/forms/[id]/",
+        "src/app/api/upload/",
+        "src/components/ui/",
+        "src/components/AdvancedForm.tsx",
+        "src/components/FileUpload.tsx",
+        "src/components/ToastProvider.tsx",
+        "src/lib/utils.ts",
+        "src/lib/database.ts",
+        "src/lib/email.ts",
+        "src/lib/validations.ts",
+        "src/types/index.ts"
+      ]
+    }
+  },
+  "testing": {
+    "checklist": [
+      "Form submission with all field types",
+      "Conditional field rendering",
+      "File upload functionality",
+      "Email notification sending",
+      "Form validation (client & server)",
+      "Responsive design on mobile/desktop",
+      "Error handling for all scenarios",
+      "Database operations (if implemented)"
+    ]
+  },
+  "deployment": {
+    "provider": "vercel",
+    "readiness": [
+      "Environment variable documentation",
+      "Build optimization settings",
+      "Error boundary components",
+      "Loading states for all async operations",
+      "SEO metadata configuration",
+      "Performance optimization (image optimization, lazy loading)"
+    ]
+  },
+  "troubleshooting": {
+    "knownIssues": [
+      {
+        "problem": "Version compatibility issues with Next.js 15",
+        "solution": "Stick to Next.js 14.x until shadcn fully supports v15"
+      },
+      {
+        "problem": "Hydration errors with shadcn components",
+        "solution": "Use 'use client' directive for interactive components"
+      },
+      {
+        "problem": "Styles not applying correctly after shadcn installation",
+        "solution": "Ensure tailwind.config.js includes all shadcn paths"
+      },
+      {
+        "problem": "TypeScript errors with file input types",
+        "solution": "Use proper typing for FileList and uncontrolled inputs"
+      },
+      {
+        "problem": "Zod schemas becoming unmanageable",
+        "solution": "Break down schemas into smaller, reusable pieces"
+      }
+    ]
+  }
+}

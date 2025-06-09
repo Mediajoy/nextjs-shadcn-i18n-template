@@ -1,0 +1,62 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+// Set the database provider (uncomment your choice)
+datasource db {
+  provider = "postgresql"   // Use this for Vercel Postgres
+  // provider = "mongodb"    // Use this for MongoDB
+  url      = env("DATABASE_URL")
+}
+
+// Form submission model
+model FormSubmission {
+  id           String   @id @default(uuid())
+  name         String
+  email        String
+  phone        String?
+  subject      String
+  message      String
+  contactMethod String   // "email", "phone", or "both"
+  fileUrls     String[] // Array of file URLs (if any)
+  status       String   @default("new") // "new", "in-progress", "completed"
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+// User model (example for authentication)
+model User {
+  id            String    @id @default(uuid())
+  name          String?
+  email         String    @unique
+  emailVerified DateTime?
+  image         String?
+  password      String?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+}
+
+// File upload tracking (optional)
+model FileUpload {
+  id          String   @id @default(uuid())
+  fileName    String
+  fileUrl     String   @unique
+  fileType    String
+  fileSize    Int
+  uploadedBy  String?  // Optional user reference
+  description String?
+  createdAt   DateTime @default(now())
+}
+
+// Email notification tracking (optional)
+model EmailNotification {
+  id          String   @id @default(uuid())
+  recipient   String
+  subject     String
+  status      String   // "sent", "failed", "delivered"
+  sentAt      DateTime @default(now())
+  formId      String?  // Optional reference to a form submission
+}

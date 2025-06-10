@@ -86,7 +86,7 @@ export default function DatabasePage() {
 DATABASE_URL="postgresql://user:password@localhost:5432/mydb"
 
 # MongoDB
-# DATABASE_URL="mongodb+srv://user:password@cluster.mongodb.net/mydb"`}</pre>
+# Add your MongoDB connection string in .env file`}</pre>
             </div>
           </CardContent>
           <CardFooter>
